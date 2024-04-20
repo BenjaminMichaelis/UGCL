@@ -15,14 +15,13 @@ namespace UGCL.Data.Migrations
                 name: "People",
                 columns: table => new
                 {
-                    PersonId = table.Column<int>(type: "int", nullable: false)
+                    PlayerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BirthDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_People", x => x.PersonId);
+                    table.PrimaryKey("PK_People", x => x.PlayerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -41,13 +40,13 @@ namespace UGCL.Data.Migrations
                         name: "FK_Teams_People_Player1Id",
                         column: x => x.Player1Id,
                         principalTable: "People",
-                        principalColumn: "PersonId",
+                        principalColumn: "PlayerId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Teams_People_Player2Id",
                         column: x => x.Player2Id,
                         principalTable: "People",
-                        principalColumn: "PersonId",
+                        principalColumn: "PlayerId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -91,9 +90,10 @@ namespace UGCL.Data.Migrations
                 column: "Team2Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teams_Player1Id",
+                name: "IX_Teams_Player1Id_Player2Id",
                 table: "Teams",
-                column: "Player1Id");
+                columns: new[] { "Player1Id", "Player2Id" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teams_Player2Id",

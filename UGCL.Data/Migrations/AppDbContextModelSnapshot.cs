@@ -54,22 +54,19 @@ namespace UGCL.Data.Migrations
                     b.ToTable("Matches");
                 });
 
-            modelBuilder.Entity("UGCL.Data.Models.Person", b =>
+            modelBuilder.Entity("UGCL.Data.Models.Player", b =>
                 {
-                    b.Property<int>("PersonId")
+                    b.Property<int>("PlayerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonId"));
-
-                    b.Property<DateTimeOffset?>("BirthDate")
-                        .HasColumnType("datetimeoffset");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonId");
+                    b.HasKey("PlayerId");
 
                     b.ToTable("People");
                 });
@@ -90,9 +87,10 @@ namespace UGCL.Data.Migrations
 
                     b.HasKey("TeamId");
 
-                    b.HasIndex("Player1Id");
-
                     b.HasIndex("Player2Id");
+
+                    b.HasIndex("Player1Id", "Player2Id")
+                        .IsUnique();
 
                     b.ToTable("Teams");
                 });
@@ -118,13 +116,13 @@ namespace UGCL.Data.Migrations
 
             modelBuilder.Entity("UGCL.Data.Models.Team", b =>
                 {
-                    b.HasOne("UGCL.Data.Models.Person", "Player1")
+                    b.HasOne("UGCL.Data.Models.Player", "Player1")
                         .WithMany()
                         .HasForeignKey("Player1Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("UGCL.Data.Models.Person", "Player2")
+                    b.HasOne("UGCL.Data.Models.Player", "Player2")
                         .WithMany()
                         .HasForeignKey("Player2Id")
                         .OnDelete(DeleteBehavior.Restrict)

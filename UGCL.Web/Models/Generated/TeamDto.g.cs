@@ -14,9 +14,9 @@ namespace UGCL.Web.Models
 
         private int? _TeamId;
         private int? _Player1Id;
-        private UGCL.Web.Models.PersonDtoGen _Player1;
+        private UGCL.Web.Models.PlayerDtoGen _Player1;
         private int? _Player2Id;
-        private UGCL.Web.Models.PersonDtoGen _Player2;
+        private UGCL.Web.Models.PlayerDtoGen _Player2;
 
         public int? TeamId
         {
@@ -28,7 +28,7 @@ namespace UGCL.Web.Models
             get => _Player1Id;
             set { _Player1Id = value; Changed(nameof(Player1Id)); }
         }
-        public UGCL.Web.Models.PersonDtoGen Player1
+        public UGCL.Web.Models.PlayerDtoGen Player1
         {
             get => _Player1;
             set { _Player1 = value; Changed(nameof(Player1)); }
@@ -38,7 +38,7 @@ namespace UGCL.Web.Models
             get => _Player2Id;
             set { _Player2Id = value; Changed(nameof(Player2Id)); }
         }
-        public UGCL.Web.Models.PersonDtoGen Player2
+        public UGCL.Web.Models.PlayerDtoGen Player2
         {
             get => _Player2;
             set { _Player2 = value; Changed(nameof(Player2)); }
@@ -56,10 +56,10 @@ namespace UGCL.Web.Models
             this.Player1Id = obj.Player1Id;
             this.Player2Id = obj.Player2Id;
             if (tree == null || tree[nameof(this.Player1)] != null)
-                this.Player1 = obj.Player1.MapToDto<UGCL.Data.Models.Person, PersonDtoGen>(context, tree?[nameof(this.Player1)]);
+                this.Player1 = obj.Player1.MapToDto<UGCL.Data.Models.Player, PlayerDtoGen>(context, tree?[nameof(this.Player1)]);
 
             if (tree == null || tree[nameof(this.Player2)] != null)
-                this.Player2 = obj.Player2.MapToDto<UGCL.Data.Models.Person, PersonDtoGen>(context, tree?[nameof(this.Player2)]);
+                this.Player2 = obj.Player2.MapToDto<UGCL.Data.Models.Player, PlayerDtoGen>(context, tree?[nameof(this.Player2)]);
 
         }
 

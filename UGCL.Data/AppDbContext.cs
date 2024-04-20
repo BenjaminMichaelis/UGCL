@@ -7,7 +7,7 @@ namespace UGCL.Data;
 [Coalesce]
 public class AppDbContext : DbContext
 {
-    public DbSet<Person> People => Set<Person>();
+    public DbSet<Player> People => Set<Player>();
     public DbSet<Team> Teams => Set<Team>();
     public DbSet<Match> Matches => Set<Match>();
 

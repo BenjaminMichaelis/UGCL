@@ -30,26 +30,25 @@ export class Match {
 }
 
 
-export interface Person extends Model<typeof metadata.Person> {
-  personId: number | null
+export interface Player extends Model<typeof metadata.Player> {
+  playerId: number | null
   name: string | null
-  birthDate: Date | null
 }
-export class Person {
+export class Player {
   
-  /** Mutates the input object and its descendents into a valid Person implementation. */
-  static convert(data?: Partial<Person>): Person {
-    return convertToModel(data || {}, metadata.Person) 
+  /** Mutates the input object and its descendents into a valid Player implementation. */
+  static convert(data?: Partial<Player>): Player {
+    return convertToModel(data || {}, metadata.Player) 
   }
   
-  /** Maps the input object and its descendents to a new, valid Person implementation. */
-  static map(data?: Partial<Person>): Person {
-    return mapToModel(data || {}, metadata.Person) 
+  /** Maps the input object and its descendents to a new, valid Player implementation. */
+  static map(data?: Partial<Player>): Player {
+    return mapToModel(data || {}, metadata.Player) 
   }
   
-  /** Instantiate a new Person, optionally basing it on the given data. */
-  constructor(data?: Partial<Person> | {[k: string]: any}) {
-    Object.assign(this, Person.map(data || {}));
+  /** Instantiate a new Player, optionally basing it on the given data. */
+  constructor(data?: Partial<Player> | {[k: string]: any}) {
+    Object.assign(this, Player.map(data || {}));
   }
 }
 
@@ -57,9 +56,9 @@ export class Person {
 export interface Team extends Model<typeof metadata.Team> {
   teamId: number | null
   player1Id: number | null
-  player1: Person | null
+  player1: Player | null
   player2Id: number | null
-  player2: Person | null
+  player2: Player | null
 }
 export class Team {
   

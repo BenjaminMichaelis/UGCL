@@ -21,51 +21,51 @@ using UGCL.Web.Models;
 
 namespace UGCL.Web.Api
 {
-    [Route("api/Person")]
+    [Route("api/Player")]
     [Authorize]
     [ServiceFilter(typeof(IApiActionFilter))]
-    public partial class PersonController
-        : BaseApiController<UGCL.Data.Models.Person, PersonDtoGen, UGCL.Data.AppDbContext>
+    public partial class PlayerController
+        : BaseApiController<UGCL.Data.Models.Player, PlayerDtoGen, UGCL.Data.AppDbContext>
     {
-        public PersonController(CrudContext<UGCL.Data.AppDbContext> context) : base(context)
+        public PlayerController(CrudContext<UGCL.Data.AppDbContext> context) : base(context)
         {
-            GeneratedForClassViewModel = context.ReflectionRepository.GetClassViewModel<UGCL.Data.Models.Person>();
+            GeneratedForClassViewModel = context.ReflectionRepository.GetClassViewModel<UGCL.Data.Models.Player>();
         }
 
         [HttpGet("get/{id}")]
         [Authorize]
-        public virtual Task<ItemResult<PersonDtoGen>> Get(
+        public virtual Task<ItemResult<PlayerDtoGen>> Get(
             int id,
             DataSourceParameters parameters,
-            IDataSource<UGCL.Data.Models.Person> dataSource)
+            IDataSource<UGCL.Data.Models.Player> dataSource)
             => GetImplementation(id, parameters, dataSource);
 
         [HttpGet("list")]
         [Authorize]
-        public virtual Task<ListResult<PersonDtoGen>> List(
+        public virtual Task<ListResult<PlayerDtoGen>> List(
             ListParameters parameters,
-            IDataSource<UGCL.Data.Models.Person> dataSource)
+            IDataSource<UGCL.Data.Models.Player> dataSource)
             => ListImplementation(parameters, dataSource);
 
         [HttpGet("count")]
         [Authorize]
         public virtual Task<ItemResult<int>> Count(
             FilterParameters parameters,
-            IDataSource<UGCL.Data.Models.Person> dataSource)
+            IDataSource<UGCL.Data.Models.Player> dataSource)
             => CountImplementation(parameters, dataSource);
 
         [HttpPost("save")]
         [Authorize]
-        public virtual Task<ItemResult<PersonDtoGen>> Save(
-            [FromForm] PersonDtoGen dto,
+        public virtual Task<ItemResult<PlayerDtoGen>> Save(
+            [FromForm] PlayerDtoGen dto,
             [FromQuery] DataSourceParameters parameters,
-            IDataSource<UGCL.Data.Models.Person> dataSource,
-            IBehaviors<UGCL.Data.Models.Person> behaviors)
+            IDataSource<UGCL.Data.Models.Player> dataSource,
+            IBehaviors<UGCL.Data.Models.Player> behaviors)
             => SaveImplementation(dto, parameters, dataSource, behaviors);
 
         [HttpPost("bulkSave")]
         [Authorize]
-        public virtual Task<ItemResult<PersonDtoGen>> BulkSave(
+        public virtual Task<ItemResult<PlayerDtoGen>> BulkSave(
             [FromBody] BulkSaveRequest dto,
             [FromQuery] DataSourceParameters parameters,
             [FromServices] IDataSourceFactory dataSourceFactory,
@@ -74,10 +74,10 @@ namespace UGCL.Web.Api
 
         [HttpPost("delete/{id}")]
         [Authorize]
-        public virtual Task<ItemResult<PersonDtoGen>> Delete(
+        public virtual Task<ItemResult<PlayerDtoGen>> Delete(
             int id,
-            IBehaviors<UGCL.Data.Models.Person> behaviors,
-            IDataSource<UGCL.Data.Models.Person> dataSource)
+            IBehaviors<UGCL.Data.Models.Player> behaviors,
+            IDataSource<UGCL.Data.Models.Player> dataSource)
             => DeleteImplementation(id, new DataSourceParameters(), dataSource, behaviors);
     }
 }

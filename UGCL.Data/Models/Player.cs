@@ -1,8 +1,9 @@
 namespace UGCL.Data.Models;
 
-public class Person
+public class Player
 {
-    public int PersonId { get; set; }
+    public int PlayerId { get; set; }
+    [Required]
     public required string Name { get; set; }
 }
 

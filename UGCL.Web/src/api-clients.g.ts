@@ -7,8 +7,8 @@ export class MatchApiClient extends ModelApiClient<$models.Match> {
 }
 
 
-export class PersonApiClient extends ModelApiClient<$models.Person> {
-  constructor() { super($metadata.Person) }
+export class PlayerApiClient extends ModelApiClient<$models.Player> {
+  constructor() { super($metadata.Player) }
 }
 
 

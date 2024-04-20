@@ -29,23 +29,22 @@ export class MatchListViewModel extends ListViewModel<$models.Match, $apiClients
 }
 
 
-export interface PersonViewModel extends $models.Person {
-  personId: number | null;
+export interface PlayerViewModel extends $models.Player {
+  playerId: number | null;
   name: string | null;
-  birthDate: Date | null;
 }
-export class PersonViewModel extends ViewModel<$models.Person, $apiClients.PersonApiClient, number> implements $models.Person  {
+export class PlayerViewModel extends ViewModel<$models.Player, $apiClients.PlayerApiClient, number> implements $models.Player  {
   
-  constructor(initialData?: DeepPartial<$models.Person> | null) {
-    super($metadata.Person, new $apiClients.PersonApiClient(), initialData)
+  constructor(initialData?: DeepPartial<$models.Player> | null) {
+    super($metadata.Player, new $apiClients.PlayerApiClient(), initialData)
   }
 }
-defineProps(PersonViewModel, $metadata.Person)
+defineProps(PlayerViewModel, $metadata.Player)
 
-export class PersonListViewModel extends ListViewModel<$models.Person, $apiClients.PersonApiClient, PersonViewModel> {
+export class PlayerListViewModel extends ListViewModel<$models.Player, $apiClients.PlayerApiClient, PlayerViewModel> {
   
   constructor() {
-    super($metadata.Person, new $apiClients.PersonApiClient())
+    super($metadata.Player, new $apiClients.PlayerApiClient())
   }
 }
 
@@ -53,9 +52,9 @@ export class PersonListViewModel extends ListViewModel<$models.Person, $apiClien
 export interface TeamViewModel extends $models.Team {
   teamId: number | null;
   player1Id: number | null;
-  player1: PersonViewModel | null;
+  player1: PlayerViewModel | null;
   player2Id: number | null;
-  player2: PersonViewModel | null;
+  player2: PlayerViewModel | null;
 }
 export class TeamViewModel extends ViewModel<$models.Team, $apiClients.TeamApiClient, number> implements $models.Team  {
   
@@ -75,12 +74,12 @@ export class TeamListViewModel extends ListViewModel<$models.Team, $apiClients.T
 
 const viewModelTypeLookup = ViewModel.typeLookup = {
   Match: MatchViewModel,
-  Person: PersonViewModel,
+  Player: PlayerViewModel,
   Team: TeamViewModel,
 }
 const listViewModelTypeLookup = ListViewModel.typeLookup = {
   Match: MatchListViewModel,
-  Person: PersonListViewModel,
+  Player: PlayerListViewModel,
   Team: TeamListViewModel,
 }
 const serviceViewModelTypeLookup = ServiceViewModel.typeLookup = {

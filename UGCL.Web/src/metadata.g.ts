@@ -94,18 +94,18 @@ export const Match = domain.types.Match = {
   dataSources: {
   },
 }
-export const Person = domain.types.Person = {
-  name: "Person",
-  displayName: "Person",
+export const Player = domain.types.Player = {
+  name: "Player",
+  displayName: "Player",
   get displayProp() { return this.props.name }, 
   type: "model",
-  controllerRoute: "Person",
-  get keyProp() { return this.props.personId }, 
+  controllerRoute: "Player",
+  get keyProp() { return this.props.playerId }, 
   behaviorFlags: 7 as BehaviorFlags,
   props: {
-    personId: {
-      name: "personId",
-      displayName: "Person Id",
+    playerId: {
+      name: "playerId",
+      displayName: "Player Id",
       type: "number",
       role: "primaryKey",
       hidden: 3 as HiddenAreas,
@@ -118,13 +118,6 @@ export const Person = domain.types.Person = {
       rules: {
         required: val => (val != null && val !== '') || "Name is required.",
       }
-    },
-    birthDate: {
-      name: "birthDate",
-      displayName: "Birth Date",
-      type: "date",
-      dateKind: "datetime",
-      role: "value",
     },
   },
   methods: {
@@ -153,8 +146,8 @@ export const Team = domain.types.Team = {
       displayName: "Player 1 Id",
       type: "number",
       role: "foreignKey",
-      get principalKey() { return (domain.types.Person as ModelType).props.personId as PrimaryKeyProperty },
-      get principalType() { return (domain.types.Person as ModelType) },
+      get principalKey() { return (domain.types.Player as ModelType).props.playerId as PrimaryKeyProperty },
+      get principalType() { return (domain.types.Player as ModelType) },
       get navigationProp() { return (domain.types.Team as ModelType).props.player1 as ModelReferenceNavigationProperty },
       hidden: 3 as HiddenAreas,
       rules: {
@@ -165,10 +158,10 @@ export const Team = domain.types.Team = {
       name: "player1",
       displayName: "Player1",
       type: "model",
-      get typeDef() { return (domain.types.Person as ModelType) },
+      get typeDef() { return (domain.types.Player as ModelType) },
       role: "referenceNavigation",
       get foreignKey() { return (domain.types.Team as ModelType).props.player1Id as ForeignKeyProperty },
-      get principalKey() { return (domain.types.Person as ModelType).props.personId as PrimaryKeyProperty },
+      get principalKey() { return (domain.types.Player as ModelType).props.playerId as PrimaryKeyProperty },
       dontSerialize: true,
     },
     player2Id: {
@@ -176,8 +169,8 @@ export const Team = domain.types.Team = {
       displayName: "Player 2 Id",
       type: "number",
       role: "foreignKey",
-      get principalKey() { return (domain.types.Person as ModelType).props.personId as PrimaryKeyProperty },
-      get principalType() { return (domain.types.Person as ModelType) },
+      get principalKey() { return (domain.types.Player as ModelType).props.playerId as PrimaryKeyProperty },
+      get principalType() { return (domain.types.Player as ModelType) },
       get navigationProp() { return (domain.types.Team as ModelType).props.player2 as ModelReferenceNavigationProperty },
       hidden: 3 as HiddenAreas,
       rules: {
@@ -188,10 +181,10 @@ export const Team = domain.types.Team = {
       name: "player2",
       displayName: "Player2",
       type: "model",
-      get typeDef() { return (domain.types.Person as ModelType) },
+      get typeDef() { return (domain.types.Player as ModelType) },
       role: "referenceNavigation",
       get foreignKey() { return (domain.types.Team as ModelType).props.player2Id as ForeignKeyProperty },
-      get principalKey() { return (domain.types.Person as ModelType).props.personId as PrimaryKeyProperty },
+      get principalKey() { return (domain.types.Player as ModelType).props.playerId as PrimaryKeyProperty },
       dontSerialize: true,
     },
   },
@@ -206,7 +199,7 @@ interface AppDomain extends Domain {
   }
   types: {
     Match: typeof Match
-    Person: typeof Person
+    Player: typeof Player
     Team: typeof Team
   }
   services: {
