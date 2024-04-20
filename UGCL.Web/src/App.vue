@@ -4,23 +4,15 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>
         <router-link to="/" style="color: inherit">
-          Coalesce Vue Template
+          UGCL
         </router-link>
       </v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer">
       <v-list>
         <v-list-item to="/" prepend-icon="fas fa-home" title="Home" />
-        <v-list-item
-          to="/widget"
-          prepend-icon="fas fa-palette"
-          title="Custom Page Example"
-        />
-        <v-list-item
-          to="/admin"
-          prepend-icon="fas fa-cogs"
-          title="Admin Pages"
-        />
+        <v-list-item to="/matches" prepend-icon="fas fa-palette" title="Matches" />
+        <v-list-item to="/admin" prepend-icon="fas fa-cogs" title="Admin Pages" />
       </v-list>
     </v-navigation-drawer>
 
