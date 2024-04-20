@@ -1,9 +1,9 @@
 {
   "webProject": {
-    "projectFile": "./Coalesce.Starter.Vue.Web/Coalesce.Starter.Vue.Web.csproj"
+    "projectFile": "./UGCL.Web/UGCL.Web.csproj"
   },
   "dataProject": {
-    "projectFile": "./Coalesce.Starter.Vue.Data/Coalesce.Starter.Vue.Data.csproj"
+    "projectFile": "./UGCL.Data/UGCL.Data.csproj"
   },
 
   "rootGenerator": "Vue",
